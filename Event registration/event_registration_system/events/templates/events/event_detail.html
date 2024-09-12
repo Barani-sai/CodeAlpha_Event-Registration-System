@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ event.title }}</title>
+</head>
+<body>
+    <h1>{{ event.title }}</h1>
+    <p>{{ event.description }}</p>
+    <p><strong>Date:</strong> {{ event.date }}</p>
+    <p><strong>Location:</strong> {{ event.location }}</p>
+    <p><strong>Max Attendees:</strong> {{ event.max_attendees }}</p>
+
+    {% if user.is_authenticated %}
+        <a href="{% url 'register_for_event' event.id %}">Register for this event</a>
+    {% else %}
+        <p><a href="{% url 'login' %}">Log in</a> to register for this event.</p>
+    {% endif %}
+    
+    <a href="{% url 'event_list' %}">Back to Events</a>
+</body>
+</html>

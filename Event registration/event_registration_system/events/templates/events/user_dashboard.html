@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Dashboard</title>
+</head>
+<body>
+    <h1>Your Registered Events</h1>
+    <ul>
+        {% for registration in registrations %}
+        <li>
+            {{ registration.event.title }} - {{ registration.event.date }}
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

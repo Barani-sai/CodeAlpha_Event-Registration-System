@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Registrations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .registration-item {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        .registration-item:last-child {
+            border-bottom: none;
+        }
+        .event-title {
+            font-size: 1.2em;
+            color: #2980b9;
+        }
+        .event-date {
+            color: #7f8c8d;
+        }
+        .cancel-link {
+            color: #e74c3c;
+            text-decoration: none;
+        }
+        .cancel-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>My Event Registrations</h1>
+    <div class="container">
+        {% if registrations %}
+            {% for registration in registrations %}
+                <div class="registration-item">
+                    <p class="event-title">{{ registration.event.title }}</p>
+                    <p class="event-date">{{ registration.event.date }}</p>
+                    <a class="cancel-link" href="{% url 'cancel_registration' registration.event.id %}">Cancel Registration</a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>You have not registered for any events yet.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
+
